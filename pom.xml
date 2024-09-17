@@ -46,6 +46,8 @@
 
 		<sonar.exclusions>src/test/**/*</sonar.exclusions>
 		<sonar.sources>src,pom.xml</sonar.sources>
+		<sonar.url>http://localhost:9000</sonar.url>
+		<sonar.token>squ_674d59260f8a4ee7bdcceddfb0126405979f3429</sonar.token>
 		<sonar.test.inclusions>src/test/**/*</sonar.test.inclusions>
 		<sonar.tests>src</sonar.tests>
 	</properties>
