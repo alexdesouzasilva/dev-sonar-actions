@@ -36,6 +36,9 @@ jobs:
     needs: sonarQube
     runs-on: self-hosted
     steps:
+      - name: Teste de Conectividade Nexus
+        run: |
+          curl -I http://localhost:8081
       - name: Nexus Repo Publish
         uses: sonatype-nexus-community/nexus-repo-github-action@master
         with:
