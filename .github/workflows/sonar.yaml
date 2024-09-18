@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main  # ou outro branch de sua escolha
+  workflow_dispatch:
 
 jobs:
 
@@ -55,7 +56,7 @@ jobs:
       - name: Teste de Conectividade Nexus
         run: |
           curl -I http://localhost:8081
-      - name: Nexus Repo Publish
+      - name: Nexus Repository Publish
         uses: sonatype-nexus-community/nexus-repo-github-action@master
         with:
           serverUrl: http://localhost:8081/repository/
