@@ -11,7 +11,7 @@
 	</parent>
 	<groupId>br.com.devsenior</groupId>
 	<artifactId>dev-sonar-actions</artifactId>
-	<version>0.0.3-SNAPSHOT</version>
+	<version>0.0.5-SNAPSHOT</version>
 	<name>dev-sonar-actions</name>
 	<description>Demo project for Spring Boot</description>
 	<url/>
@@ -51,6 +51,19 @@
 		<sonar.test.inclusions>src/test/**/*</sonar.test.inclusions>
 		<sonar.tests>src</sonar.tests>
 	</properties>
+
+	<distributionManagement>
+		<repository>
+			<id>nexus-releases</id>
+			<url>http://localhost:8081/repository/devops-maven-release/</url>
+		</repository>
+		<snapshotRepository>
+			<id>nexus-snapshots</id>
+			<url>http://localhost:8081/repository/devops-maven-snapshot/</url>
+		</snapshotRepository>
+	</distributionManagement>
+
+
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -71,6 +84,7 @@
 
 	</dependencies>
 
+	
 	<build>
 		<finalName>dev-sonar-actions</finalName>
 		<plugins>
@@ -142,5 +156,6 @@
 			</plugin>
 		</plugins>
 	</build>
+
 
 </project>

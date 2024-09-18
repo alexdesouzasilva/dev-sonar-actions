@@ -60,14 +60,5 @@ jobs:
         run: |
           curl -I http://localhost:8081
       - name: Nexus Repository Publish
-        uses: sonatype-nexus-community/nexus-repo-github-action@master
-        with:
-          serverUrl: http://localhost:8081/repository/
-          username: ${{ vars.NEXUS_USERNAME }}
-          password: ${{ secrets.NEXUS_PASSWORD }}
-          format: maven2
-          repository: devops-maven-snapshot
-          coordinates: groupId=br.com.devsenior artfactId=dev-sonar-actions version=0.0.3
-          assets: extension=jar
-          filename: ./target/dev-sonar-actions.jar
+        run: mvn clean deploy
         
