@@ -22,22 +22,23 @@ jobs:
           cache: maven
       - name: Build with maven
         run: mvn package --file pom.xml
-      - name: Dependency Check
+      - name: Depcheck
         uses: dependency-check/Dependency-Check_Action@main
         id: Depcheck
         with:
           project: 'test'
           path: '.'
           format: 'HTML'
-          out: 'reports'
+          out: 'reports' # this is the default, no need to specify unless you wish to override it
           args: >
             --failOnCVSS 7
             --enableRetired
-      - name: Upload Test Result
+      - name: Upload Test results
         uses: actions/upload-artifact@master
         with:
-          name: Depcheck report
-          path: ${{ github.workspace }}/reports
+           name: Depcheck report
+           path: ${{github.workspace}}/reports
+
 
   sonarQube:
     name: Sonar
