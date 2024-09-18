@@ -47,7 +47,7 @@ jobs:
           password: ${{ secrets.NEXUS_PASSWORD }}
           format: maven2
           repository: devops-maven-snapshot
-          coordinates: groupId=br.com.devsenior artfactId=dev-sonar-actions version=0.0.2
+          coordinates: groupId=br.com.devsenior artfactId=dev-sonar-actions version=0.0.3
           assets: extension=jar
           filename: ./target/dev-sonar-actions.jar
         
