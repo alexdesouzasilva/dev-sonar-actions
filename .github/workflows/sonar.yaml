@@ -21,6 +21,22 @@ jobs:
           cache: maven
       - name: Build with maven
         run: mvn package --file pom.xml
+      - name: Dependency Check
+        uses: dependency-check/Dependency-Check_Action@main
+        id: Depcheck
+        with:
+          project: 'test'
+          path: '.'
+          format: 'HTML'
+          out: 'reports'
+          args: >
+            --failOnCVSS 7
+            --enableRetired
+      - name: Upload Test Result
+        uses: actions/upload-artifact@master
+        with:
+          name: Depcheck report
+          path: ${{ github.workspace }}/reports
 
   sonarQube:
     name: Sonar
@@ -42,7 +58,7 @@ jobs:
       - name: Nexus Repo Publish
         uses: sonatype-nexus-community/nexus-repo-github-action@master
         with:
-          serverUrl: http://localhost:8081
+          serverUrl: http://localhost:8081/repository/
           username: ${{ vars.NEXUS_USERNAME }}
           password: ${{ secrets.NEXUS_PASSWORD }}
           format: maven2
