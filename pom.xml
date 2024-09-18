@@ -72,6 +72,7 @@
 	</dependencies>
 
 	<build>
+		<finalName>dev-sonar-actions</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.owasp</groupId>

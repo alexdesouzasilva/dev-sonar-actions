@@ -26,13 +26,26 @@ services:
     volumes:
       - postgresql_data:/var/lib/postgresql/data
 
+  nexus:
+    image: sonatype/nexus3:latest
+    container_name: nexus
+    restart: always
+    ports:
+      - 8081:8081
+    volumes:
+      - nexus-data:/nexus-data
+
 volumes:
   sonarqube_data:
   sonarqube_logs:
   sonarqube_extensions:
   postgresql_data:
+  nexus-data: {}
 
 # Precisou ajustar o limite de memória virtual:
 # Forma temporária: sudo sysctl -w vm.max_map_count=262144
 # Alterar de forma permanente: /etc/sysctl.conf -> vm.max_map_count=262144
 # Você pode verificar o uso de memória com: free -h
+
+# sudo docker-compose up
+# password amdin nexus: sudo docker exec -it nexus cat /nexus-data/admin.password
